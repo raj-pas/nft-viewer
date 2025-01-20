@@ -2,10 +2,20 @@
     <head>
         <title>Show NFTs from OpenSea</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        >
         <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     </head>
-    <body>
-        <div id="root"></div>
+    <body class="bg-light">
+        <div class="container py-5">
+            <h1 class="text-center mb-4">My NFTs</h1>
+            <div id="root" class="row g-4">
+                <!-- NFT cards will be injected here -->
+            </div>
+        </div>
         <script>
             let account = null;
 
@@ -54,7 +64,12 @@
                 if (!isConnected) return;
 
                 const rootElement = document.getElementById('root');
-                rootElement.innerHTML = `<p>Loading NFTs...</p>`;
+                rootElement.innerHTML = `
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>`;
 
                 try {
                     // Use the correct API endpoint
@@ -95,12 +110,14 @@
                 console.log('NFT Metadata:', nft); // Debugging: Log NFT data
 
                 return `
-                    <div>
-                        <h1>#${identifier} ${name}</h1>
-                        <img src="${image}" alt="NFT image" width="200" height="200" onerror="this.src='fallback-image-url.jpg';"/>
-                        <p>${description}</p>
-                        <a href="${opensea_url}" target="_blank">View on OpenSea</a>
-                        <hr />
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <img src="${image}" class="card-img-top" alt="NFT Image" onerror="this.src='https://via.placeholder.com/200';">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate">${name}</h5>
+                                <p class="card-text text-muted">${description}</p>
+                            </div>
+                        </div>
                     </div>`;
             };
 
