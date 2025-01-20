@@ -1,0 +1,40 @@
+env
+node_modules
+/data
+/datagen/*.csv
+ssh
+.env
+.cache
+/.cache
+/dist/*
+!/dist/.gitkeep
+logs
+/.cache
+.cache
+.DS_Store
+.elasticbeanstalk/
+.nyc_output/
+.vscode/
+venv/
+.idea/
+.tool-versions
+
+# asdf-vm
+.tool-versions
+
+advisor_portal/test/output/
+advisor_portal/scripts/local_test_scripts/
+
+advisor_portal/scripts/local_test_scripts
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+locales/*
+
+coverage
+
+# Local MD5 file
+setup-dotenv-local.md5
