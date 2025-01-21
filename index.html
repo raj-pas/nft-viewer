@@ -123,6 +123,10 @@
                     </div>`;
             };
 
+            // Auto-refresh NFTs every 30 seconds
+            setInterval(fetchNFTs, 30000);
+
+            // Initial fetch
             fetchNFTs();
         </script>
     </body>
